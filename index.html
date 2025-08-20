@@ -219,6 +219,42 @@
             margin: 0;
         }
         
+        .multi-upload-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .upload-tips {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .upload-tips h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .upload-tips ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .upload-tips li {
+            margin-bottom: 12px;
+            color: #555;
+            line-height: 1.5;
+            padding-left: 0;
+        }
+        
+        .upload-tips li:last-child {
+            margin-bottom: 0;
+        }
+        
         .file-upload {
             border: 2px dashed #667eea;
             border-radius: 10px;
@@ -226,6 +262,44 @@
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .file-list {
+            margin-top: 20px;
+            grid-column: 1 / -1;
+        }
+        
+        .file-list-header {
+            background: #667eea;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .file-list-body {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .multi-upload-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .file-upload {
+                padding: 30px 20px;
+            }
         }
         
         .file-upload:hover {
@@ -451,14 +525,27 @@
                 <div class="upload-intro">
                     <p><strong>🔒 100% Private & Secure:</strong> Your financial data never leaves your browser. Everything is processed locally on your device.</p>
                     <p><strong>📊 What you'll get:</strong> Detailed spending breakdown, trend analysis, budget recommendations, and personalized money-saving tips.</p>
+                    <p><strong>📁 Upload Multiple Files:</strong> Add all your bank accounts, credit cards, and financial files at once for a complete picture.</p>
                 </div>
                 
-                <div class="file-upload" id="fileUpload">
-                    <div class="file-upload-icon">💳</div>
-                    <div class="file-upload-text"><strong>Ready to discover your money patterns?</strong></div>
-                    <div class="file-upload-subtext">Drop your bank/credit card files here or click to browse</div>
-                    <div class="file-upload-formats">Supports CSV and Excel files • Last 6-12 months recommended</div>
-                    <input type="file" id="fileInput" multiple accept=".csv,.xlsx,.xls" style="display: none;">
+                <div class="multi-upload-container">
+                    <div class="file-upload" id="fileUpload">
+                        <div class="file-upload-icon">💳</div>
+                        <div class="file-upload-text"><strong>Ready to discover your money patterns?</strong></div>
+                        <div class="file-upload-subtext">Drop multiple files here or click to browse</div>
+                        <div class="file-upload-formats">✓ Multiple accounts ✓ CSV and Excel files ✓ 6-12 months recommended</div>
+                        <input type="file" id="fileInput" multiple accept=".csv,.xlsx,.xls" style="display: none;">
+                    </div>
+                    
+                    <div class="upload-tips">
+                        <h4>💡 Pro Tips for Best Results:</h4>
+                        <ul>
+                            <li><strong>Include all accounts:</strong> Checking, savings, credit cards, business accounts</li>
+                            <li><strong>Get complete data:</strong> 6-12 months gives the most accurate insights</li>
+                            <li><strong>Multiple banks welcome:</strong> Upload files from different banks - we'll combine them</li>
+                            <li><strong>File formats:</strong> CSV files work best, but Excel (.xlsx, .xls) files are also supported</li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="file-list hidden" id="fileList"></div>
